@@ -1,0 +1,82 @@
+<nav>
+  <div class="nav-wrapper blue">
+    <a href="#" class="brand-logo center">Inscription</a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+    </ul>
+  </div>
+</nav>
+
+<form (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col s10 offset-s1">
+      <div class="card-panel">
+  
+        <!-- Champ nom -->
+        <div class="form-group">
+          <label for="name">Nom</label>
+          <input type="text" formControlName="name" id="name"
+                  required
+                  pattern="^[a-zA-Z0-9àéèç\s]{1,40}$"
+                  name="name"
+                  placeholder="Ex. Henry Cavil">
+  
+          <div [hidden]="studentForm.get('name')?.invalid && studentForm.get('name')?.touched"
+                class="card-panel red accent-1">
+                Le nom est requis, dois faire entre 1 et 40 caractères et ne peut contenir que des majuscules, minuscules, accent, chiffre et des espaces.
+          </div>
+        </div>
+
+        <!-- Champ numéro de téléphone -->
+        <div class="form-group">
+          <label for="phoneNumber">Numéro de téléphone</label>
+          <input type="number" formControlName="phoneNumber" id="phoneNumber"
+                required
+                pattern="^[1-9]{9}$"
+                name="phoneNumber"
+                placeholder="Ex. 648777048">
+  
+          <div [hidden]="studentForm.get('phoneNumber')?.invalid && studentForm.get('phoneNumber')?.touched"
+                class="card-panel red accent-1">
+                Un numéro de téléphone en 9 chiffres sans le "0" est requis.
+          </div>
+        </div>
+  
+        <!-- Champ email -->
+        <div class="form-group">
+          <label for="hp">E-mail</label>
+          <input type="email" formControleNam="email" id="email"
+                  required
+                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                  placeholder="Ex. henry.cavil@example.com">
+           <div [hidden]="studentForm.get('email')?.invalid && studentForm.get('email')?.touched"
+                 class="card-panel red accent-1">
+                 L'email est requis.
+           </div>
+        </div>
+  
+        <!-- Pokemon cp -->
+        <div class="form-group">
+          <label for="cp">Dégâts</label>
+          <input type="text" formControlName="address" id="address"
+                  required
+                  pattern="^[a-zA-Z0-9àéèç\s]{1,100}$"
+                  placeholder="Ex. 2 rue de la république">
+           <div [hidden]="studentForm.get('address')?.invalid && studentForm.get('address')?.touched"
+                 class="card-panel red accent-1">
+                 L'adresse est requise.
+           </div>
+        </div>
+  
+        <!-- Submit button -->
+        <div class="divider"></div>
+        <div class="section center">
+          <button type="submit"
+            class="waves-effect waves-light btn"
+            [disabled]="!studentForm.invalid">
+            S'inscrire</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+</form>
